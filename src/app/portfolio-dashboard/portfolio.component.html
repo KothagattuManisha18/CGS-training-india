@@ -1,0 +1,147 @@
+<div class="container">
+    <h1 class="text-center my-4">Investment Portfolio Dashboard</h1>
+
+    <div class="row">
+        
+        <div class="col-md-3 sidebar">
+            <h4>Components</h4>
+            <ul class="sidebar-list list-group">
+                <li class="list-group-item" (click)="selectComponent('projectList')">Project List</li>
+                <li class="list-group-item" (click)="selectComponent('projectDetail')">Project Detail</li>
+                <li class="list-group-item" (click)="selectComponent('resourceManagement')">Resource Management</li>
+                <li class="list-group-item" (click)="selectComponent('timeline')">Timeline</li>
+                <li class="list-group-item" (click)="selectComponent('budgetManagement')">Budget Management</li>
+                <li class="list-group-item" (click)="selectComponent('teamManagement')">Team Management</li>
+                <li class="list-group-item" (click)="selectComponent('reports')">Reports</li>
+                <li class="list-group-item" (click)="selectComponent('taskTracking')">Task Tracking</li>
+                <li class="list-group-item" (click)="selectComponent('userProfile')">User Profile</li>
+                <li class="list-group-item" (click)="selectComponent('settings')">Settings</li>
+                <li class="list-group-item" (click)="selectComponent('notifications')">Notifications</li>
+                <li class="list-group-item" (click)="selectComponent('adminPanel')">Admin Panel</li>
+                <li class="list-group-item" (click)="selectComponent('portfolioOverview')">Investment Portfolio Overview</li>
+            </ul>
+        </div>
+
+        
+        <div class="col-md-9 main-content">
+            
+            <div *ngIf="selectedComponent === 'projectList'">
+                <h2>Your Portfolio</h2>
+                <div *ngIf="portfolio.length > 0" class="portfolio-list">
+                    <div *ngFor="let project of portfolio; let i = index" class="portfolio-item card mb-3">
+                        <div class="card-body">
+                            <h3>{{ project.name }}</h3>
+                            <p>{{ project.description }}</p>
+                            <p><strong>Budget:</strong> ${{ project.budget }}</p>
+                            <p><strong>Deadline:</strong> {{ project.deadline | date }}</p>
+                            <button class="btn btn-danger btn-sm" (click)="deleteProject(i)">Delete</button>
+                            <button class="btn btn-info btn-sm" (click)="selectProject(project)">Details</button>
+                        </div>
+                    </div>
+                </div>
+                <p *ngIf="portfolio.length === 0">No projects in the Investment portfolio yet.</p>
+            </div>
+
+            
+            <div *ngIf="selectedComponent === 'projectDetail'">
+                <h3>Project Details</h3>
+                <div *ngIf="selectedProject">
+                    <p><strong>Project Name:</strong> {{ selectedProject.name }}</p>
+                    <p><strong>Budget:</strong> ${{ selectedProject.budget }}</p>
+                    <p><strong>Deadline:</strong> {{ selectedProject.deadline | date }}</p>
+                    <p><strong>Description:</strong> {{ selectedProject.description }}</p>
+                    <p><strong>Status:</strong> {{ selectedProject.status }}</p>
+                </div>
+                <p *ngIf="!selectedProject">No project selected.</p>
+            </div>
+
+            
+            <div *ngIf="selectedComponent === 'resourceManagement'">
+                <h3>Resource Management</h3>
+                <p>Manage your resources effectively.</p>
+                <p>Resources available: {{ totalResources }}</p>
+                <p>Resource Allocation: {{ resourceAllocation | json }}</p>
+            </div>
+
+            
+            <div *ngIf="selectedComponent === 'timeline'">
+                <h3>Project Timeline</h3>
+                <p>View your project timeline here.</p>
+            
+            </div>
+
+            
+            <div *ngIf="selectedComponent === 'budgetManagement'">
+                <h3>Budget Management</h3>
+                <p>Manage your project budget here.</p>
+                <p>Total Budget: ${{ totalBudget }}</p>
+                <p>Spent: ${{ budgetSpent }}</p>
+                <p>Remaining: ${{ budgetRemaining }}</p>
+            </div>
+
+            
+            <div *ngIf="selectedComponent === 'teamManagement'">
+                <h3>Team Management</h3>
+                <p>Manage your project team here.</p>
+                <p>Total Team Members: {{ teamMembers.length }}</p>
+                <ul>
+                    <li *ngFor="let member of teamMembers">{{ member.name }} - {{ member.role }}</li>
+                </ul>
+            </div>
+
+            
+            <div *ngIf="selectedComponent === 'reports'">
+                <h3>Reports</h3>
+                <p>Generate and view your project reports here.</p>
+                <p>Report Generation Status: {{ reportStatus }}</p>
+            </div>
+
+            
+            <div *ngIf="selectedComponent === 'taskTracking'">
+                <h3>Task Tracking</h3>
+                <p>Track your project tasks here.</p>
+                <ul>
+                    <li *ngFor="let task of tasks">{{ task.name }} - {{ task.status }}</li>
+                </ul>
+            </div>
+
+            
+            <div *ngIf="selectedComponent === 'userProfile'">
+                <h3>User Profile</h3>
+                <p>Manage your profile details here.</p>
+                <p><strong>Username:</strong> {{ userProfile.username }}</p>
+                <p><strong>Email:</strong> {{ userProfile.email }}</p>
+            </div>
+
+            
+            <div *ngIf="selectedComponent === 'settings'">
+                <h3>Settings</h3>
+                <p>Change your settings here.</p>
+                
+            </div>
+
+            
+            <div *ngIf="selectedComponent === 'notifications'">
+                <h3>Notifications</h3>
+                <p>View your notifications here.</p>
+                <ul>
+                    <li *ngFor="let notification of notifications">{{ notification.message }}</li>
+                </ul>
+            </div>
+
+            
+            <div *ngIf="selectedComponent === 'adminPanel'">
+                <h3>Admin Panel</h3>
+                <p>Manage admin settings and features here.</p>
+                
+            </div>
+
+            
+            <div *ngIf="selectedComponent === 'portfolioOverview'">
+                <h3>Portfolio Overview</h3>
+                <p>View a comprehensive overview of your investment portfolio here.</p>
+                
+            </div>
+        </div>
+    </div>
+</div>

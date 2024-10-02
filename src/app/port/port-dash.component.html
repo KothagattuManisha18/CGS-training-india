@@ -1,0 +1,113 @@
+<div class="container">
+    <h1>Portfolio Dashboard</h1>
+
+    <div class="row">
+        
+        <div class="col-md-3 sidebar">
+            <h4>Components</h4>
+            <ul class="sidebar-list">
+                <li (click)="selectComponent('projectList')">Project List</li>
+                <li (click)="selectComponent('projectDetail')">Project Detail</li>
+                <li (click)="selectComponent('resourceManagement')">Resource Management</li>
+                <li (click)="selectComponent('timeline')">Timeline</li>
+                <li (click)="selectComponent('budgetManagement')">Budget Management</li>
+                <li (click)="selectComponent('teamManagement')">Team Management</li>
+                <li (click)="selectComponent('reports')">Reports</li>
+                <li (click)="selectComponent('taskTracking')">Task Tracking</li>
+                <li (click)="selectComponent('userProfile')">User Profile</li>
+                <li (click)="selectComponent('settings')">Settings</li>
+                <li (click)="selectComponent('notifications')">Notifications</li>
+                <li (click)="selectComponent('adminPanel')">Admin Panel</li>
+                <li (click)="selectComponent('portfolioOverview')">Portfolio Overview</li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-md-9 main-content">
+            <!-- Add new project form -->
+            <div class="card mb-4">
+                <div class="card-header">Add New Project</div>
+                <div class="card-body">
+                    <form (ngSubmit)="addProject()" #projectForm="ngForm">
+                        <div class="form-group">
+                            <label for="projectName">Project Name</label>
+                            <input type="text" id="projectName" class="form-control" required [(ngModel)]="projectName" name="projectName">
+                        </div>
+                        <div class="form-group">
+                            <label for="projectDescription">Project Description</label>
+                            <textarea id="projectDescription" class="form-control" required [(ngModel)]="projectDescription" name="projectDescription"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success" [disabled]="!projectForm.valid">Add Project</button>
+                    </form>
+                </div>
+            </div>
+
+            
+            <h2>Your Portfolio</h2>
+            <div *ngIf="portfolio.length > 0" class="portfolio-list">
+                <div *ngFor="let project of portfolio; let i = index" class="portfolio-item">
+                    <h3>{{ project.name }}</h3>
+                    <p>{{ project.description }}</p>
+                    <button class="btn btn-danger btn-sm" (click)="deleteProject(i)">Delete</button>
+                    <button class="btn btn-info btn-sm" (click)="selectProject(project)">Details</button>
+                </div>
+            </div>
+            <p *ngIf="portfolio.length === 0">No projects in the portfolio yet.</p>
+
+            
+            <div class="card mb-4" *ngIf="selectedComponent">
+                <div class="card-header">{{ selectedComponent.title }}</div>
+                <div class="card-body">
+                    <ng-container [ngSwitch]="selectedComponent.key">
+                        <ng-container *ngSwitchCase="'projectList'">
+                            <h3>Your Projects</h3>
+                            <div *ngFor="let project of portfolio; let i = index" class="portfolio-item">
+                                <h3>{{ project.name }}</h3>
+                                <p>{{ project.description }}</p>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'projectDetail'">
+                            <p>Details about a selected project will be shown here.</p>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'resourceManagement'">
+                            <p>Manage your project resources here.</p>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'timeline'">
+                            <p>View your project timeline here.</p>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'budgetManagement'">
+                            <p>Manage your project budget here.</p>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'teamManagement'">
+                            <p>Manage your project team here.</p>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'reports'">
+                            <p>Generate project reports here.</p>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'taskTracking'">
+                            <p>Track project tasks here.</p>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'userProfile'">
+                            <p>Manage your user profile here.</p>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'settings'">
+                            <p>Change your settings here.</p>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'notifications'">
+                            <p>View your notifications here.</p>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'adminPanel'">
+                            <p>Manage admin settings and features here.</p>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'portfolioOverview'">
+                            <p>View a comprehensive overview of your portfolio.</p>
+                        </ng-container>
+                        <ng-container *ngSwitchDefault>
+                            <p>Select a component to see its details.</p>
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

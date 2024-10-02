@@ -1,0 +1,109 @@
+.user-portfolio {
+    padding: 20px;
+    background-color: #68ceac; 
+    border-radius: 10px;
+    box-shadow: 0 4px 20px #c18a8a66; 
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #d4e511; 
+    text-align: center; 
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px; 
+}
+
+.sidebar {
+    background: linear-gradient(135deg, #d0cf8c, #f1f4f6); 
+    padding: 20px;
+    border-radius: 10px 0 0 10px; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    flex: 0 0 25%; 
+}
+
+.sidebar h4 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #070707; 
+}
+
+.sidebar-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar-list li {
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s; 
+}
+
+.sidebar-list li:hover {
+    background-color: #003366; 
+    transform: scale(1.02); 
+}
+
+.main-content {
+    padding: 20px;
+    flex-grow: 1;
+    background-color: #f9f3f3; /* Dark gray for main content */
+    border-radius: 0 10px 10px 0; /* Rounded corners on the right side */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #181717; /* White color for better contrast */
+}
+
+button {
+    margin-right: 10px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* Light blue button color */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Added transform for scaling */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly scale up on hover */
+}
+
+ul {
+    padding-left: 20px; /* Indentation for the project list */
+}
+
+li {
+    margin-bottom: 10px; /* Spacing between project items */
+    color: #0c0101; /* White color for project items */
+    font-size: 1.1rem; /* Slightly larger font for readability */
+}
+
+/* Form Elements */
+input[type="text"],
+textarea {
+    width: 100%; /* Full width for inputs */
+    padding: 10px; /* Padding for comfort */
+    border: 1px solid #007bff; /* Light blue border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #50b859; /* Dark background for input fields */
+    color: #3b87b3; /* White text for input */
+    margin-bottom: 15px; /* Space below input fields */
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #00aaff; /* Highlight border on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(0, 170, 255, 0.5); /* Glow effect */
+}

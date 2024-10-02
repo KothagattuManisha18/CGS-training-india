@@ -1,0 +1,159 @@
+<div class="admin-portfolio">
+  <h1>Admin Investment Portfolio Management</h1>
+
+  <div class="row">
+    
+    <div class="col-md-3 sidebar">
+      <h4>Admin Components</h4>
+      <ul class="sidebar-list">
+        <li (click)="selectAdminComponent('adminDashboard')"><b>Admin Dashboard</b></li>
+        <li (click)="selectAdminComponent('adminInvestmentPortfolioManagement')"><b>Add New Investment Portfolio</b></li>
+        <li (click)="selectAdminComponent('adminPortfolioList')"><b>Admin Investment Portfolio List</b></li>
+        <li (click)="selectAdminComponent('adminPortfolioDetails')"><b>Admin Portfolio Details</b></li>
+        <li (click)="selectAdminComponent('adminProjectManagement')"><b>Admin Project Management</b></li>
+        <li (click)="selectAdminComponent('adminResourceManagement')"><b>Admin Asset allocation</b></li>
+        <li (click)="selectAdminComponent('adminTimelineManagement')"><b>Admin Timeline Management</b></li>
+        <li (click)="selectAdminComponent('adminBudgetManagement')"><b>Admin Budget Management</b></li>
+        <li (click)="selectAdminComponent('adminUserManagement')"><b>Risk Assessment</b></li>
+        <li (click)="selectAdminComponent('adminReports')"><b>Admin Reports</b></li>
+        <li (click)="selectAdminComponent('adminSettings')"><b>Admin Settings</b></li>
+        <button class="btn btn-danger mt-4" (click)="logout()">Logout</button>
+      </ul>
+    </div>
+    
+    
+    <div class="col-md-9 main-content">
+      
+      <section *ngIf="selectedAdminComponent === 'adminDashboard'">
+        <h2>Admin Dashboard</h2>
+        <p>Total Portfolios: {{ portfolios.length }}</p>
+        <p>Total Users: {{ totalUsers }}</p>
+        <p>Total Budget Managed: ${{ totalBudget }}</p>
+        <button (click)="selectAdminComponent('adminPortfolioList')">View All Portfolios</button>
+        <div class="dashboard-summary">
+          <p>Active Portfolios: {{ activePortfolios }}</p>
+          <p>Completed Projects: {{ completedProjects }}</p>
+        </div>
+      </section>
+
+      
+      <section class="add-portfolio" *ngIf="selectedAdminComponent === 'adminInvestmentPortfolioManagement'">
+        <h2>Add New Portfolio</h2>
+        <form (submit)="addPortfolio()">
+          <input 
+            type="text" 
+            [(ngModel)]="newPortfolio.name" 
+            name="portfolioName" 
+            placeholder="Portfolio Name" 
+            required 
+          />
+          <textarea 
+            [(ngModel)]="newPortfolio.description" 
+            name="portfolioDescription" 
+            placeholder="Portfolio Description" 
+            required 
+          ></textarea>
+          <button type="submit">Add Portfolio</button>
+        </form>
+      </section>
+
+      
+      <section class="portfolio-list" *ngIf="selectedAdminComponent === 'adminPortfolioList'">
+        <h2>Your Portfolios</h2>
+        <ul>
+          <li *ngFor="let portfolio of portfolios">
+            <h3>{{ portfolio.name }}</h3>
+            <p>{{ portfolio.description }}</p>
+            <p><strong>Budget:</strong> ${{ portfolio.budget }}</p>
+            <button (click)="viewPortfolioDetails(portfolio.id)">View Details</button>
+            <button (click)="deletePortfolio(portfolio.id)">Delete</button>
+          </li>
+        </ul>
+      </section>
+
+      
+      <section *ngIf="selectedAdminComponent === 'adminPortfolioDetails' && selectedPortfolio">
+        <h2>Investment Portfolio Details</h2>
+        <h3>{{ selectedPortfolio.name }}</h3>
+        <p>{{ selectedPortfolio.description }}</p>
+        <p><strong>Budget:</strong> ${{ selectedPortfolio.budget }}</p>
+        <p><strong>Deadline:</strong> {{ selectedPortfolio.deadline | date }}</p>
+        <p><strong>Number of Projects:</strong> {{ selectedPortfolio.projects.length }}</p>
+        <p><strong>Performance:</strong> {{ selectedPortfolio.performance }}%</p>
+        <button (click)="editPortfolio(selectedPortfolio.id)">Edit Portfolio</button>
+        <button (click)="deletePortfolio(selectedPortfolio.id)">Delete Portfolio</button>
+
+        <h4>Projects in this Investment Portfolio:</h4>
+        <ul *ngIf="selectedPortfolio.projects.length > 0">
+          <li *ngFor="let project of selectedPortfolio.projects">
+            <h5>{{ project.name }}</h5>
+            <p>{{ project.description }}</p>
+            <p><strong>Budget:</strong> ${{ project.budget }}</p>
+            <p><strong>Deadline:</strong> {{ project.deadline | date }}</p>
+            <button (click)="viewProjectDetails(project.id)">View Project</button>
+          </li>
+        </ul>
+        <p *ngIf="selectedPortfolio.projects.length === 0">No projects found in this portfolio.</p>
+      </section>
+
+      
+      <section *ngIf="selectedAdminComponent === 'adminProjectManagement'">
+        <h2>Admin Project Management</h2>
+        <p>Manage your projects here.</p>
+        <p>Total Active Projects: {{ activeProjects }}</p>
+      </section>
+
+      
+      <section *ngIf="selectedAdminComponent === 'adminResourceManagement'">
+        <h2>Admin Assest Allocation</h2>
+        <p>Manage resources allocated to projects here.</p>
+        <p>Resource A: Steve - Assigned to project Stocks</p>
+        <p>Resource B: Mark - Assigned to project Bonds,real estate, mutual funds</p>
+      </section>
+
+      
+      <section *ngIf="selectedAdminComponent === 'adminTimelineManagement'">
+        <h2>Admin Timeline Management</h2>
+        <p>Manage project timelines here.</p>
+        <p>project IPMS start date: feb 2,2024 - end date:may 2,2024</p>
+        <p>project INVESTMENT start date:mar 18,2024 - end date:june 5,2024</p>
+      </section>
+
+      
+      <section *ngIf="selectedAdminComponent === 'adminBudgetManagement'">
+        <h2>Admin Budget Management</h2>
+        <p>Manage project budgets here.</p>
+        <p>total budget for website redesign: $100,000</p>
+        <p>amount spent: $50,000 </p>
+        <p>remaining amount: $50,000</p>
+      </section>
+
+      
+      <section *ngIf="selectedAdminComponent === 'adminUserManagement'">
+        <h2>Risk Assesment</h2>
+        <p>Market Risk: The risk of losses due to market fluctuations like stock prices, interest rates, or currency exchange rates.</p>
+        <p>Credit Risk: The risk that a borrower or counterparty may default on their obligations.
+          Liquidity Risk: The risk of not being able to sell an investment quickly without a significant loss in value.</p>
+        <p>Total Users: {{ totalUsers }}</p>
+      </section>
+
+      
+      <section *ngIf="selectedAdminComponent === 'adminReports'">
+        <h2>Admin Reports</h2>
+        <p>Generate and view reports here.</p>
+        <p>projects completed: 5</p>
+        <p>total budget:$200,000</p>
+        <p>budget used: $150,000</p>
+      </section>
+
+      
+      <section *ngIf="selectedAdminComponent === 'adminSettings'">
+        <h2>Admin Settings</h2>
+        <p>Manage application settings here.</p>
+        <p>Admins can manage user accounts, including adding new users, modifying user details, or deleting accounts.</p>
+        <p>darkmode: disabled</p>
+        <p>language:english</p>
+      </section>
+    </div>
+  </div>
+</div>
