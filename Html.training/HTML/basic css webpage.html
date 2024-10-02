@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Page Layout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+        .left-box {
+            width: 25%;
+            background-color: #f0f0f0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .right-box {
+            width: 75%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .box {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        .box.logo {
+            height: 100px;
+        }
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-left: auto;
+        }
+        .right-box-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .right-box .module {
+            margin: 10px 0;
+            padding: 20px;
+            background-color: #e0e0e0;
+            text-align: center;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="left-box">
+        <div class="box logo">Logo</div>
+        <div class="box">Link 1</div>
+        <div class="box">Link 2</div>
+        <div class="box">Link 3</div>
+        <div class="box">Link 4</div>
+    </div>
+    <div class="right-box">
+        <div class="right-box-header">
+            <div class="box name">Name</div>
+            <div class="profile-pic"></div>
+        </div>
+        <div class="module">Module 1</div>
+        <div class="module">Module 2</div>
+        
+    </div>
+</div>
+
+</body>
+</html>

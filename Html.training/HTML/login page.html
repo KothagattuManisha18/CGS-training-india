@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gmail Login Page</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f4f4f4; /* Light background similar to the image */
+        }
+
+        .container-fluid {
+            height: 100vh;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .login-form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .login-form {
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .logo {
+            max-width: 250px;
+            height: auto;
+        }
+
+        .form-control {
+            border: 2px solid #ddd;
+        }
+
+        .btn-primary {
+            background-color: #1a73e8;
+            border-color: #1a73e8;
+        }
+
+        .btn-primary:hover {
+            background-color: #135ab0;
+        }
+
+        a {
+            color: #1a73e8;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .text-center-custom {
+            text-align: left;
+        }
+
+        .text-muted-custom {
+            text-align: left;
+            color: #70757a;
+        }
+
+        hr {
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row h-100">
+            <!-- Left Column: Gmail Logo -->
+            <div class="col-md-6 d-flex justify-content-center align-items-center">
+                <img src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_1x_r5.png" alt="Gmail Logo" class="logo">
+            </div>
+
+            <!-- Right Column: Sign-in Form -->
+            <div class="col-md-6 d-flex justify-content-center align-items-center">
+                <div class="login-form card shadow p-4">
+                    <h3 class="text-center-custom">Sign in</h3>
+                    <p class="text-muted text-center-custom">to continue to Gmail</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="email" placeholder="Email or phone" required>
+                        </div>
+                        <a href="#" class="d-block text-right mb-3">Forgot email?</a>
+                        <button type="submit" class="btn btn-primary btn-block">Next</button>
+                        <div class="text-center mt-3">
+                            <a href="#">Create account</a>
+                        </div>
+                    </form>
+                    <hr>
+                    <p class="text-center text-muted small">
+                        Not your computer? Use Guest mode to sign in privately.<br>
+                        <a href="#">Learn more</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

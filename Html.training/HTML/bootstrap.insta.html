@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Home Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #fafafa;
+            font-family: Arial, sans-serif;
+        }
+        .sidebar {
+            background-color: #fff;
+            border-right: 1px solid #dbdbdb;
+            height: 100vh;
+            position: fixed;
+            width: 250px;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            display: block;
+            padding: 10px 20px;
+            color: #262626;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .sidebar a:hover {
+            background-color: #f0f0f0;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .stories {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+        .stories img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            margin-right: 10px;
+            border: 2px solid #ff3f4f;
+            padding: 2px;
+        }
+        .feed {
+            margin-top: 20px;
+        }
+        .feed img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .feed .post {
+            margin-bottom: 30px;
+        }
+        .post .info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+        .post .info img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        .post .info .details {
+            display: flex;
+            align-items: center;
+        }
+        .post .info .details p {
+            margin-left: 10px;
+            font-weight: bold;
+        }
+        .feed .interactions {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+        .interactions i {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="profile text-center">
+        <img src="flower.jpeg" alt="Profile Picture" class="img-fluid rounded-circle">
+       
+    </div>
+    <a href="#">Feed</a>
+    <a href="#">Explore</a>
+    <a href="#">Notification</a>
+    <a href="#">Messages</a>
+    <a href="#">Direct</a>
+    <a href="#">Stats</a>
+    <a href="#">Settings</a>
+    <a href="#">Logout</a>
+</div>
+
+<div class="content">
+    <div class="stories">
+        <img src="flower.jpeg" alt="Story 1">
+        <img src="flower.jpeg" alt="Story 2">
+        <img src="flower.jpeg" alt="Story 3">
+        <img src="flower.jpeg" alt="Story 4">
+        <img src="flower.jpeg" alt="Story 5">
+        <img src="flower.jpeg" alt="Story 6">
+    </div>
+
+    <div class="feed">
+        <div class="post">
+            <div class="info">
+                <div class="details">
+                    <img src="flower.jpeg" alt="Profile">
+                    <p></p>
+                </div>
+                <i class="fas fa-ellipsis-h"></i>
+            </div>
+            <img src="bird.jpeg" alt="Post Image">
+            <div class="interactions">
+                <div>
+                    <i class="far fa-heart"></i> 84.4k
+                    <i class="far fa-comment"></i> 88
+                </div>
+                <i class="far fa-bookmark"></i>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+

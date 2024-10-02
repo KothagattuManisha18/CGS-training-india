@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>showroom</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #450d7c;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            text-align: center;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .price {
+            margin-top: 10px;
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        footer {
+            background: #f8f1f1;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+
+         
+
+            .container {
+                padding: 0 10px;
+            }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>showroom</h1>
+</header>
+
+<div class="container">
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="bike.jpeg" alt="Sample Bike 1">
+            <div class="price">$999.99</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bike.jpeg" alt="Sample Bike 2">
+            <div class="price">$1,199.99</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bike.jpeg" alt="Sample Bike 3">
+            <div class="price">$3999.99</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bike.jpeg" alt="Sample Bike 4">
+            <div class="price">$3999.99</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bike.jpeg" alt="Sample Bike 5">
+            <div class="price">$3999.99</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bike.jpeg" alt="Sample Bike 6">
+            <div class="price">$1,999.99</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
