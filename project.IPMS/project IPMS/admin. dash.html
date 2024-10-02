@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Investment Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f4f6f9;
+    }
+    .navbar {
+      margin-bottom: 40px;
+    }
+    .dashboard-container {
+      margin-top: 50px;
+    }
+    .card {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Admin Dashboard</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="logoutButton">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dashboard Content -->
+  <div class="container dashboard-container">
+    <h2 class="mb-4">Corporate Admin Dashboard</h2>
+    
+    <!-- Corporate Overview -->
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card bg-light">
+          <div class="card-body">
+            <h5 class="card-title">Total Corporate Investments</h5>
+            <p class="card-text" id="totalInvestments">$50,000,000</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card bg-light">
+          <div class="card-body">
+            <h5 class="card-title">Number of Users</h5>
+            <p class="card-text" id="totalUsers">200</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card bg-light">
+          <div class="card-body">
+            <h5 class="card-title">New Investments (This Month)</h5>
+            <p class="card-text" id="newInvestments">$1,500,000</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Actions -->
+    <h3 class="mt-5">Admin Actions</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <button class="btn btn-primary btn-block w-100" id="manageUsersButton">Manage Users</button>
+      </div>
+      <div class="col-md-6">
+        <button class="btn btn-secondary btn-block w-100" id="viewReportsButton">View Reports</button>
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Simulated data for the admin dashboard
+      const totalInvestments = 50000000;
+      const totalUsers = 200;
+      const newInvestments = 1500000;
+
+      // Update the dashboard with the data
+      document.getElementById('totalInvestments').textContent = `$${totalInvestments.toLocaleString()}`;
+      document.getElementById('totalUsers').textContent = totalUsers;
+      document.getElementById('newInvestments').textContent = `$${newInvestments.toLocaleString()}`;
+
+      // Handle admin actions
+      document.getElementById('manageUsersButton').addEventListener('click', function () {
+        alert('Redirecting to user management page...');
+        // Redirect to manage users page (implement redirection logic)
+      });
+
+      document.getElementById('viewReportsButton').addEventListener('click', function () {
+        alert('Redirecting to reports page...');
+        // Redirect to reports page (implement redirection logic)
+      });
+
+      // Handle logout
+      document.getElementById('logoutButton').addEventListener('click', function () {
+        alert('Logged out!');
+        // Implement logout logic
+      });
+    });
+  </script>
+
+</body>
+</html>

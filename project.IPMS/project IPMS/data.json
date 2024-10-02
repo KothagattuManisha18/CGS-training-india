@@ -1,0 +1,70 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "username": "analyst1",
+        "email": "analyst1@example.com",
+        "password": "analyst123",
+        "role": "Investment Analyst",
+        "portfolio": {
+            
+          "totalValue": "$1,200,000",
+          "returnRate": "8.5%",
+          "annualGrowth": "10.2%"
+        },
+        "recentActivity": [
+          "Analyzed market trends",
+          "Published quarterly report"
+        ]
+      },
+      {
+        "id": 2,
+        "username": "analyst2",
+        "email": "analyst2@example.com",
+        "password": "analyst456",
+        "role": "Investment Analyst",
+        "portfolio": {
+          "totalValue": "$850,000",
+          "returnRate": "6.3%",
+          "annualGrowth": "7.8%"
+        },
+        "recentActivity": [
+          "Reviewed investment options",
+          "Attended investment seminar"
+        ]
+      },{
+        "id": 7,
+        "username": "analyst7",
+        "email": "analyst7@example.com",
+        "password": "analyst456",
+        "role": "Investment Analyst",
+        "portfolio": {
+          "totalValue": "$850,000",
+          "returnRate": "6.3%",
+          "annualGrowth": "7.8%"
+        },
+        "recentActivity": [
+          "Reviewed investment options",
+          "Attended investment seminar"
+        ]
+      },
+      {
+        "id": 3,
+        "username": "manager1",
+        "email": "manager1@example.com",
+        "password": "manager123",
+        "role": "Portfolio Manager",
+        "portfolio": null,
+        "recentActivity": []
+      },
+      {
+        "id": 4,
+        "username": "manager2",
+        "email": "manager2@example.com",
+        "password": "manager456",
+        "role": "Portfolio Manager",
+        "portfolio": null,
+        "recentActivity": []
+      }
+    ]
+  }

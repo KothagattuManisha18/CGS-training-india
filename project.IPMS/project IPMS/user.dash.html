@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investment Portfolio Management System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card {
+      margin-bottom: 20px;
+    }
+    .dashboard-container {
+      margin-top: 50px;
+    }
+    #adminDashboard, #userDashboard {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Investment Portfolio System</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="logoutButton">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dashboard Container -->
+  <div class="container dashboard-container">
+    
+    <!-- Corporate Admin Dashboard -->
+    <div id="adminDashboard">
+      <h2>Corporate Admin Dashboard</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Total Corporate Investments</h5>
+              <p class="card-text">$50,000,000</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Number of Users</h5>
+              <p class="card-text">200</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary">Manage Users</button>
+    </div>
+    
+    <!-- User Dashboard -->
+    <div id="userDashboard">
+      <h2>User Dashboard</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Total Portfolio Value</h5>
+              <p class="card-text">$1,250,000</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Total Returns</h5>
+              <p class="card-text">8.5%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <canvas id="portfolioChart" width="400" height="200"></canvas>
+    </div>
+
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Simulate getting the user's role from a token or backend
+      // In a real application, this would come from authentication (e.g., JWT token)
+      const userRole = 'user';  // Change to 'admin' to see the admin dashboard
+
+      // Show the appropriate dashboard based on the user's role
+      if (userRole === 'admin') {
+        document.getElementById('adminDashboard').style.display = 'block';
+      } else if (userRole === 'user') {
+        document.getElementById('userDashboard').style.display = 'block';
+        loadUserPortfolioChart();
+      }
+
+      // Handle logout
+      document.getElementById('logoutButton').addEventListener('click', function () {
+        alert('Logged out!');
+        // Clear token and redirect to login page in a real application
+      });
+    });
+
+    // Load a chart for the user's portfolio
+    function loadUserPortfolioChart() {
+      const ctx = document.getElementById('portfolioChart').getContext('2d');
+      const portfolioChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+          datasets: [{
+            label: 'Portfolio Growth ($)',
+            data: [1000000, 1050000, 1100000, 1070000, 1150000, 1250000],
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 2
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: false
+            }
+          }
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

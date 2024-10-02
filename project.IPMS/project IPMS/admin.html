@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #f2f2f2, #e0e0e0);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 30px;
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .dashboard-header h1 {
+            font-size: 24px;
+            color: #0056b3; /* Changed header color */
+        }
+        .profile-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .btn-signout {
+            margin-top: 20px;
+        }
+        .user-list {
+            margin-bottom: 20px;
+        }
+        .user-list h4 {
+            color: #0056b3; /* Changed section header color */
+        }
+        .user-list ul {
+            list-style: none;
+            padding: 0;
+        }
+        .user-list li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+            color: #333; /* Changed text color */
+        }
+        .user-list li:hover {
+            background-color: #e7f0ff; /* Changed hover background color */
+        }
+        .dropdown-menu {
+            min-width: 150px;
+        }
+        .dropdown-item {
+            color: #333; /* Changed dropdown item color */
+        }
+        .dropdown-item:hover {
+            background-color: #f1f1f1; /* Changed hover background color for dropdown items */
+        }
+        .dropdown-item.text-danger {
+            color: #dc3545; /* Changed sign-out color */
+        }
+        #user-details h4 {
+            color: #0056b3; /* Changed user details section header color */
+        }
+        #user-details p {
+            color: #333; /* Changed text color for user details */
+        }
+        #user-details ul {
+            list-style: none;
+            padding: 0;
+        }
+        #user-details li {
+            padding: 5px 0;
+            color: #333; /* Changed text color for activity items */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard-header">
+            <h1>Admin Dashboard</h1>
+            <div class="dropdown">
+                <img src="profile.jpeg" alt="Profile Image" class="profile-img dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown">
+                <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                    <li><a class="dropdown-item" href="#" id="viewProfile">View Profile</a></li>
+                    <li><a class="dropdown-item" href="#" id="settings">Settings</a></li>
+                    <li><a class="dropdown-item text-danger" href="#" id="signOutButton">Sign Out</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="user-list">
+            <h4>Users</h4>
+            <ul id="userList"></ul>
+        </div>
+        <div id="user-details" style="display: none;">
+            <h4>User Details</h4>
+            <p><strong>Email:</strong> <span id="userEmail"></span></p>
+            <p><strong>Portfolio Total Value:</strong> <span id="userPortfolioValue"></span></p>
+            <p><strong>Recent Activity:</strong></p>
+            <ul id="userRecentActivity"></ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = JSON.parse(localStorage.getItem('user'));
+
+            if (!user || user.role !== 'Portfolio Manager') {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            fetch('data.json')
+                .then(response => response.json())
+                .then(data => {
+                    const userList = document.getElementById('userList');
+                    data.users.forEach(u => {
+                        if (u.role === 'Investment Analyst') {
+                            const listItem = document.createElement('li');
+                            listItem.textContent = u.email;
+                            listItem.dataset.userId = u.id;
+                            listItem.addEventListener('click', function() {
+                                showUserDetails(u);
+                            });
+                            userList.appendChild(listItem);
+                        }
+                    });
+                });
+        });
+
+        document.getElementById('signOutButton').addEventListener('click', function() {
+            localStorage.removeItem('user');
+            window.location.href = 'login.html';
+        });
+
+        document.getElementById('viewProfile').addEventListener('click', function() {
+            // Implement profile view functionality here
+            alert('View Profile functionality is not implemented.');
+        });
+
+        document.getElementById('settings').addEventListener('click', function() {
+            // Implement settings functionality here
+            alert('Settings functionality is not implemented.');
+        });
+
+        function showUserDetails(user) {
+            document.getElementById('userEmail').textContent = user.email;
+            if (user.portfolio) {
+                document.getElementById('userPortfolioValue').textContent = user.portfolio.totalValue;
+                const activityList = document.getElementById('userRecentActivity');
+                activityList.innerHTML = '';
+                user.recentActivity.forEach(activity => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = activity;
+                    activityList.appendChild(listItem);
+                });
+            } else {
+                document.getElementById('userPortfolioValue').textContent = 'N/A';
+                document.getElementById('userRecentActivity').innerHTML = '<li>No recent activity</li>';
+            }
+            document.getElementById('user-details').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
