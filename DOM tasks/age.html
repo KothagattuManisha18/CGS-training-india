@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        input[type="date"] {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: calc(100% - 24px); 
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Age Calculator</h1>
+        <label for="birthdate">Date of Birth:</label>
+        <input type="date" id="birthdate" onchange="calculateAge()" />
+        <label for="presentDate">Present Date:</label>
+        <input type="date" id="presentDate" onchange="calculateAge()" />
+        <div class="result" id="result"></div>
+        <div class="error" id="error"></div>
+    </div>
+
+    <script>
+        function calculateAge() {
+            const birthdateInput = document.getElementById('birthdate');
+            const presentDateInput = document.getElementById('presentDate');
+            const resultDiv = document.getElementById('result');
+            const errorDiv = document.getElementById('error');
+            
+            const birthdate = new Date(birthdateInput.value);
+            const presentDate = new Date(presentDateInput.value);
+            
+            // Clear previous results and errors
+            resultDiv.textContent = '';
+            errorDiv.textContent = '';
+
+            if (!birthdateInput.value || !presentDateInput.value) {
+                errorDiv.textContent = 'Please enter both dates.';
+                return;
+            }
+            
+            if (presentDate < birthdate) {
+                errorDiv.textContent = 'Present date cannot be before birthdate.';
+                return;
+            }
+
+            let age = presentDate.getFullYear() - birthdate.getFullYear();
+            const monthDifference = presentDate.getMonth() - birthdate.getMonth();
+            
+            if (monthDifference < 0 || (monthDifference === 0 && presentDate.getDate() < birthdate.getDate())) {
+                age--; 
+            }
+            
+            resultDiv.textContent = `Your age is ${age} years.`;
+        }
+    </script>
+</body>
+</html>
+
+
