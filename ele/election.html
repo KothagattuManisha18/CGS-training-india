@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elections</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .party-logo{
+           width: 100px;
+           height: 100px;
+           align-items:center;
+        }
+        
+        .score{
+            font-size: 2rem;
+            margin-bottom: 15px;
+            margin-top: 10px;
+        }
+        .vote{
+            width: 10px;
+        }
+    </style>
+        
+</head>
+<body>
+    <div class="container.fluid"><h1 class="text-center">Elections</h1>
+        <div class="row">
+            
+            <div class="card col-md-3 " >
+             <div class="card-title text-center"><h3>JANASENA</h2></div>
+                <img src="janasena.jpg" alt="logo" class="party-logo mx-auto" >
+             <div class=" score text-dark text-center " id="s1"><h2>0
+            </h2>
+            </div>
+             <div class=" btn btn-primary text-center p-2 m-3" id="btn1"  data-score="s1">Vote</div>
+            </div>
+            <div class="card col-md-3 ">
+                <div class="card-title text-center"><h3>BJP</h3></div>
+                <img src="BJP.jpeg" alt="logo"class="party-logo mx-auto">
+                <div class="score text-dark text-center" id="s2"><h2>0</h2></div>
+                <div class="btn btn-primary text-center p-2 m-3" id="btn2" data-score="s2">Vote</div>
+            </div>
+            <div class="card col-md-3 ">
+                <div class="card-title text-center"><h3>CONGRESS</h3></div>
+                <img src="congress.png" alt="logo" class="party-logo mx-auto">
+                <div class="score text-dark text-center" id="s3" ><h2>0</h2></div>
+                <div class="btn btn-primary text-center p-2 m-3" id="btn3" data-score="s3" >Vote</div>
+            </div>
+            <div class="card col-md-3">
+                <div class="card-title text-center"><h3>BRS</h3></div>
+                <img src="brs.jpg" alt="" class="party-logo mx-auto">
+                <div class="score text-dark text-center" id="s4"><h2>0</h2></div>
+                <div class="btn btn-primary text-center p-2 m-3" id="btn4" data-score="s4">Vote</div>
+            </div>
+
+        </div>
+        <div class="container">
+            <div class="row ">
+                <button class="btn btn-finish btn-success  mt-4 px-5" onclick="GameOver()" id="gameover" >Finish</button>
+            </div>
+        </div>
+        
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
